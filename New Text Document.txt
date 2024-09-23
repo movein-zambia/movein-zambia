@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>MoveIn Zambia - Find Your Perfect Property</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+        }
+        nav {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+        }
+        nav a {
+            color: white;
+            padding: 0.5rem;
+            text-decoration: none;
+        }
+        nav a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+        section {
+            padding: 2rem;
+        }
+        #map {
+            height: 500px;
+            width: 100%;
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Welcome to MoveIn Zambia</h1>
+    <p>Your one-stop solution for affordable property rentals with integrated moving and cleaning services.</p>
+</header>
+
+<nav>
+    <a href="#listings">Property Listings</a> |
+    <a href="#services">Services</a> |
+    <a href="#about">About Us</a> |
+    <a href="#contact">Contact Us</a>
+</nav>
+
+<section id="listings">
+    <h2>Available Properties</h2>
+    <p>Use the map below to find rental properties available in your area.</p>
+    <div id="map"></div>
+</section>
+
+<footer>
+    <p>&copy; 2024 MoveIn Zambia. All Rights Reserved.</p>
+</footer>
+
+<script>
+    function initMap() {
+        // Set the center of the map (example: Lusaka, Zambia)
+        var lusaka = { lat: -15.3875, lng: 28.3228 };
+
+        // Create a map object centered on Lusaka
+        var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 12,
+            center: lusaka
+        });
+
+        // Example marker (you can replace with dynamic property locations)
+        var marker = new google.maps.Marker({
+            position: lusaka,
+            map: map,
+            title: 'Lusaka City'
+        });
+        
+        // You can add multiple markers for properties dynamically here
+        // Example:
+        var properties = [
+            { lat: -15.3875, lng: 28.3228, title: 'Property 1' },
+            { lat: -15.4000, lng: 28.3500, title: 'Property 2' }
+        ];
+
+        properties.forEach(function(property) {
+            new google.maps.Marker({
+                position: { lat: property.lat, lng: property.lng },
+                map: map,
+                title: property.title
+            });
+        });
+    }
+</script>
+
+<!-- Include Google Maps API -->
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap"></script>
+
+</body>
+</html>
